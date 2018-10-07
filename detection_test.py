@@ -1,3 +1,7 @@
+#author: kazi mejbaul islam
+
+
+
 from __future__ import division
 import dlib
 import cv2
@@ -16,7 +20,7 @@ def shape_to_np(shape, dtype="int"):
     return coords
 
 def distance(x,y):
-    return math.hypot(x[1] - x[0], y[1] - y[0])
+    return math.sqrt( (x[1] - y[1])**2 + (x[0] - y[0])**2 )
 
 predictor_path = 'shape_predictor_68_face_landmarks.dat'
 
@@ -44,8 +48,18 @@ lip_width = distance(top_lip,bottom_lip)
 cv2.line(img,right_lip,left_lip,(255,0,0),5)
 cv2.line(img,top_lip,bottom_lip,(255,0,0),5)
 
+eye_border_len = distance(shape[36], shape[45])
+eye_inner_len = distance(shape[39], shape[42])
+cv2.line(img, tuple(shape[36]), tuple(shape[45]), (255,255,255), 2)
+cv2.line(img,tuple(shape[39]), tuple(shape[42]), (0,0,255), 2)
+
+
+eye_ratio = eye_border_len/eye_inner_len
 lip_ratio = lip_len/lip_width
-print(lip_ratio)
+print(lip_len)
+print(lip_width)
+
+cv2.imwrite('output.jpg', img)
 cv2.imshow('image', img)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
