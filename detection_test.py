@@ -53,12 +53,16 @@ eye_inner_len = distance(shape[39], shape[42])
 cv2.line(img, tuple(shape[36]), tuple(shape[45]), (255,255,255), 2)
 cv2.line(img,tuple(shape[39]), tuple(shape[42]), (0,0,255), 2)
 
+nose_left = shape[35]
+nose_right = shape[31]
 
 eye_ratio = eye_border_len/eye_inner_len
 lip_ratio = lip_len/lip_width
-print(lip_len)
-print(lip_width)
+print(lip_ratio, 'lip')
+print(eye_ratio,'eye')
 
+right_angle = math.degrees(math.atan(abs(right_lip[1]-nose_left[1])/abs(nose_left[0]-right_lip[0])))
+left_angle = math.degrees(math.atan(abs(left_lip[1]-nose_right[1])/abs(nose_right[0]-left_lip[0])))
 cv2.imwrite('output.jpg', img)
 cv2.imshow('image', img)
 cv2.waitKey(0)
