@@ -27,7 +27,9 @@ model.compile(loss='binary_crossentropy', optimizer=opt, metrics=['accuracy'])
 
 model.fit(X_train,y_train,epochs=5,validation_data=(X_test,y_test), batch_size=5)
 
-test = [26.565,58.57,28.202,59.744,2.935661108,2.375]
+test_ratim = [26.565,58.57,28.202,59.744,2.935661108,2.375]
 test_me = [29.624,64.983,32.856,69.864,2.818548363,2.355078946]
-print(model.predict(np.array([test_me,])))
+test_me_trainset = X_train[1,:]
+print(test_me_trainset)
+print(model.predict(np.array([test_me_trainset,])))
 
