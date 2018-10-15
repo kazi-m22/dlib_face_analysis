@@ -1,10 +1,16 @@
 # dlib_face_analysis
 
-##sample output:
+## sample output:
 ![alt text](https://github.com/theUnspecified/dlib_face_analysis/blob/master/output.jpg)
-
 lip length ratio: 2.65
 
-
 eye ratio: 2.41
+
+
+
+## lip ratio compare with two persons data
+![alt text](https://github.com/theUnspecified/dlib_face_analysis/blob/master/lip_ratio_compare.png)
+
+
+
 
