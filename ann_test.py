@@ -24,17 +24,20 @@ X_test = sc.transform(X_test)
 
 model = Sequential()
 
-model.add(Dense(4, input_dim=6, activation='relu'))
-model.add(Dense(3, activation='relu'))
+model.add(Dense(10, input_dim=6, activation='relu'))
+model.add(Dense(10, activation='relu'))
 # model.add(Dense(5, activation='relu', kernel_regularizer=regularizers.l2(.1)))
+model.add(Dense(10, activation='relu'))
+model.add(Dense(10, activation='relu'))
+model.add(Dense(10, activation='relu'))
 
 model.add(Dense(1, activation='sigmoid'))
 
-opt = Adam(lr = .00001,decay=0.0)
+opt = Adam(lr = .1,decay=0.0)
 model.compile(loss='binary_crossentropy', optimizer=opt, metrics=['accuracy'])
 
-model.fit(X_train,y_train,epochs=20,validation_data=(X_test,y_test), batch_size=5)
-
+model.fit(X_train,y_train,epochs=1,validation_data=(X_test,y_test), batch_size=5)
+model.save_weights('latest_best.h5')
 test_ratim = [26.565,58.57,28.202,59.744,2.935661108,2.375]
 test_me = [29.624,64.983,32.856,69.864,2.818548363,2.355078946]
 test_me_trainset = X_train[1,:]
