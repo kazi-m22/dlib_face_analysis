@@ -44,7 +44,7 @@ predictor_path = 'shape_predictor_68_face_landmarks.dat'
 detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor(predictor_path)
 
-with open('raid_face.csv', 'a') as f:
+with open('misbah.csv', 'a') as f:
     wr = csv.writer(f, dialect='excel')
 
     while True:
